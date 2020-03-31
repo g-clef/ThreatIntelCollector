@@ -11,14 +11,14 @@ spec:
               server: <IP>
               path: <share path>
         containers:
-          - name: ti-collector
+          - name: ti-collector-oneoff
             image: gclef/ticollector:1.0
             imagePullPolicy: "IfNotPresent"
             volumeMounts:
               - name: ti-mount
                 mountPath: /RAID
         restartPolicy: Never
-      imagePullSecrets:
-        - name: <>
+        imagePullSecrets:
+           - name: <>
 
     backoffLimit: 4

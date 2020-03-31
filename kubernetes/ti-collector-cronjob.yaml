@@ -15,7 +15,7 @@ spec:
                 server: <IP>
                 path: <share>
           containers:
-            - name: ti-collector
+            - name: ti-collector-cron
               image: gclef/ticollector:1.0
               imagePullPolicy: "IfNotPresent"
               volumeMounts:
