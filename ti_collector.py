@@ -58,7 +58,7 @@ class AptNotesGetter(GitGetter):
         updated = self.pull()
         if not updated:
             return
-        json_file = json.load(open(os.path.join(self.git_path, "APTNotes.json")))
+        json_file = json.load(open(os.path.join(self.git_path, "APTnotes.json")))
         save_dir = os.path.join(self.git_path, self.archive_path)
         if not os.path.exists(save_dir):
             os.mkdir(save_dir)
