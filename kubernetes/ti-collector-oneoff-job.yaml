@@ -18,5 +18,7 @@ spec:
               - name: ti-mount
                 mountPath: /RAID
         restartPolicy: Never
+      imagePullSecrets:
+        - name: <>
 
     backoffLimit: 4

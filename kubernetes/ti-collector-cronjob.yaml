@@ -21,3 +21,5 @@ spec:
               volumeMounts:
                 - name: malware-mount
                   mountPath: /RAID
+          imagePullSecrets:
+            - name: <>
