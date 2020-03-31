@@ -1,0 +1,23 @@
+kind: CronJob
+apiVersion: batch/v1beta1
+metadata:
+  name: ti-collector-cron
+spec:
+  schedule: "@daily"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          restartPolicy: OnFailure
+          volumes:
+            - name: ti-mount
+              nfs:
+                server: <IP>
+                path: <share>
+          containers:
+            - name: ti-collector
+              image: gclef/ti-collector:1.0
+              imagePullPolicy: "IfNotPresent"
+              volumeMounts:
+                - name: malware-mount
+                  mountPath: /RAID
