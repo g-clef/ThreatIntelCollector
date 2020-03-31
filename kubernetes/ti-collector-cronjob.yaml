@@ -16,7 +16,7 @@ spec:
                 path: <share>
           containers:
             - name: ti-collector
-              image: gclef/ti-collector:1.0
+              image: gclef/ticollector:1.0
               imagePullPolicy: "IfNotPresent"
               volumeMounts:
                 - name: malware-mount

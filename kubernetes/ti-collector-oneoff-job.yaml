@@ -12,7 +12,7 @@ spec:
               path: <share path>
         containers:
           - name: ti-collector
-            image: gclef/ti-collector:1.0
+            image: gclef/ticollector:1.0
             imagePullPolicy: "IfNotPresent"
             volumeMounts:
               - name: ti-mount
