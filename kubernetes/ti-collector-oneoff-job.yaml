@@ -1,0 +1,24 @@
+kind: Job
+apiVersion: batch/v1
+metadata:
+  name: ti-collector-oneoff
+spec:
+    template:
+      spec:
+        volumes:
+          - name: ti-mount
+            nfs:
+              server: <IP>
+              path: <share path>
+        containers:
+          - name: ti-collector-oneoff
+            image: gclef/ticollector:1.2
+            imagePullPolicy: "IfNotPresent"
+            volumeMounts:
+              - name: ti-mount
+                mountPath: /RAID
+        restartPolicy: Never
+        imagePullSecrets:
+           - name: <>
+
+    backoffLimit: 4
