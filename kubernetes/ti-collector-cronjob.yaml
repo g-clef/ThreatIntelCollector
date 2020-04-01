@@ -19,7 +19,7 @@ spec:
               image: gclef/ticollector:1.2
               imagePullPolicy: "IfNotPresent"
               volumeMounts:
-                - name: malware-mount
+                - name: ti-mount
                   mountPath: /RAID
           imagePullSecrets:
             - name: <>
