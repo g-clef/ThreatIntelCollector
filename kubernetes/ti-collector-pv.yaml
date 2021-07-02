@@ -19,7 +19,7 @@ spec:
     readOnly: false
     volumeHandle: ti-collector-pv
     volumeAttributes:
-      source: "//192.168.1.197/raw_malware/github-android-malware"
+      source: "//192.168.1.197/ti_reports"
     nodeStageSecretRef:
       name: ti-collector-smb-secrets
       namespace: default
