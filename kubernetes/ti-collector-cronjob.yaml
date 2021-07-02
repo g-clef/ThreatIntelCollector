@@ -11,9 +11,8 @@ spec:
           restartPolicy: OnFailure
           volumes:
             - name: ti-mount
-              nfs:
-                server: <IP>
-                path: <share>
+              persistentVolumeClaim:
+                claimName: ti-collector-pvc
           containers:
             - name: ti-collector-cron
               image: gclef/ticollector:1.2
