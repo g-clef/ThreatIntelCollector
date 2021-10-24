@@ -105,10 +105,6 @@ class CyberMonitorGetter(GitGetter):
     pass
 
 
-class FdiskYouGetter(GitGetter):
-    pass
-
-
 if __name__ == "__main__":
     configfile = configparser.ConfigParser()
     configfile.read("ti-collector.conf")
@@ -119,18 +115,11 @@ if __name__ == "__main__":
     apt_cybermonitor_path = configfile.get("APTCyberMonitor", "git_path")
     apt_cybermonitor_github_url = configfile.get("APTCyberMonitor", "github_url")
 
-    fdiskyou_path = configfile.get("FDiskYou", "git_path")
-    fdiskyou_github_url = configfile.get("FDiskYou", "github_url")
-
     aptnotes_getter = AptNotesGetter(aptnotes_path, aptnotes_github_url, aptnotes_archive_path)
     aptnotes_getter.start()
 
     cyberMonitor_getter = CyberMonitorGetter(apt_cybermonitor_path, apt_cybermonitor_github_url)
     cyberMonitor_getter.start()
 
-    fdiskyou_getter = FdiskYouGetter(fdiskyou_path, fdiskyou_github_url)
-    fdiskyou_getter.start()
-
     aptnotes_getter.join()
     cyberMonitor_getter.join()
-    fdiskyou_getter.join()
