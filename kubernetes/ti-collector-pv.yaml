@@ -22,7 +22,7 @@ spec:
       source: "//192.168.1.197/ti_reports"
     nodeStageSecretRef:
       name: ti-collector-smb-secrets
-      namespace: default
+      namespace: ti
 ---
 kind: PersistentVolumeClaim
 apiVersion: v1

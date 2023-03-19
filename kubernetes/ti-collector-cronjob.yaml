@@ -15,7 +15,7 @@ spec:
                 claimName: ti-collector-pvc
           containers:
             - name: ti-collector-cron
-              image: gclef/ticollector:1.3
+              image: gclef/ticollector:1.4
               imagePullPolicy: "IfNotPresent"
               volumeMounts:
                 - name: ti-mount
