@@ -15,17 +15,3 @@ spec:
   nfs:
     server: 192.168.1.197
     path: /volume1/minio/ti-collector
----
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: ti-collector-pvc
-  namespace: ti-collector
-spec:
-  accessModes:
-    - ReadWriteMany
-  storageClassName: minio-nfs
-  volumeName: ti-collector-pv
-  resources:
-    requests:
-      storage: 100Gi
