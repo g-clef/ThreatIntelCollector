@@ -2,21 +2,20 @@ kind: Job
 apiVersion: batch/v1
 metadata:
   name: ti-collector-oneoff
+  namespace: ti-collector
 spec:
-    template:
-      spec:
-        volumes:
-          - name: ti-mount
-            persistentVolumeClaim:
-              claimName: ti-collector-pvc
-        containers:
-          - name: ti-collector-oneoff
-            image: gclef/ticollector:1.3
-            imagePullPolicy: "IfNotPresent"
-            volumeMounts:
-              - name: ti-mount
-                mountPath: /RAID
-        restartPolicy: Never
-        imagePullSecrets:
-           - name: registrycreds
-    backoffLimit: 4
+  template:
+    spec:
+      restartPolicy: Never
+      volumes:
+        - name: ti-mount
+          persistentVolumeClaim:
+            claimName: ti-collector-pvc
+      containers:
+        - name: ti-collector-oneoff
+          image: gclef/ticollector:1.4
+          imagePullPolicy: IfNotPresent
+          volumeMounts:
+            - name: ti-mount
+              mountPath: /RAID
+  backoffLimit: 4
