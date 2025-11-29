@@ -6,9 +6,9 @@ ADD ti_collector.py .
 ADD requirements.txt .
 RUN pip3 install -r requirements.txt
 
-# Create non-root user
-RUN groupadd -g 1000 ticollector && \
-    useradd -u 1000 -g ticollector -s /bin/bash ticollector && \
+# Create non-root user with UID 1024 to match NFS ownership
+RUN groupadd -g 1024 ticollector && \
+    useradd -u 1024 -g ticollector -s /bin/bash ticollector && \
     chown -R ticollector:ticollector /app
 
 # Switch to non-root user

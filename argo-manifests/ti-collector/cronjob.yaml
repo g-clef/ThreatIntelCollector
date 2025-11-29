@@ -11,9 +11,9 @@ spec:
         spec:
           restartPolicy: OnFailure
           securityContext:
-            runAsUser: 1000
-            runAsGroup: 1000
-            fsGroup: 1000
+            runAsUser: 1024
+            runAsGroup: 1024
+            fsGroup: 1024
             runAsNonRoot: true
           volumes:
             - name: ti-mount
@@ -21,7 +21,7 @@ spec:
                 claimName: ti-collector-pvc
           containers:
             - name: ti-collector-cron
-              image: gclef/ticollector:1.5
+              image: gclef/ticollector:1.6
               imagePullPolicy: IfNotPresent
               securityContext:
                 allowPrivilegeEscalation: false
