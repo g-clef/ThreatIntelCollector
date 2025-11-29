@@ -1,0 +1,30 @@
+
+  apiVersion: batch/v1
+  kind: Job
+  metadata:
+    name: ti-collector-chown
+    namespace: ti-collector
+  spec:
+    template:
+      spec:
+        restartPolicy: Never
+        securityContext:
+          runAsUser: 0  # Run as root for this one-time fix
+        volumes:
+          - name: ti-mount
+            persistentVolumeClaim:
+              claimName: ti-collector-pvc
+        containers:
+          - name: chown-container
+            image: busybox
+            command:
+              - /bin/sh
+              - -c
+              - |
+                echo "Changing ownership of /RAID to 1000:1000..."
+                chown -R 1000:1000 /RAID
+                echo "Done!"
+            volumeMounts:
+              - name: ti-mount
+                mountPath: /RAID
+

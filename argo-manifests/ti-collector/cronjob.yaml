@@ -10,14 +10,24 @@ spec:
       template:
         spec:
           restartPolicy: OnFailure
+          securityContext:
+            runAsUser: 1000
+            runAsGroup: 1000
+            fsGroup: 1000
+            runAsNonRoot: true
           volumes:
             - name: ti-mount
               persistentVolumeClaim:
                 claimName: ti-collector-pvc
           containers:
             - name: ti-collector-cron
-              image: gclef/ticollector:1.4
+              image: gclef/ticollector:1.5
               imagePullPolicy: IfNotPresent
+              securityContext:
+                allowPrivilegeEscalation: false
+                capabilities:
+                  drop:
+                    - ALL
               volumeMounts:
                 - name: ti-mount
                   mountPath: /RAID
